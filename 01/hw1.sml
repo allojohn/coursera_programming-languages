@@ -63,7 +63,7 @@ fun date_to_string(date:int * int * int) =
 fun number_before_reaching_sum (sum: int, int_list: int list) =
   if sum >= hd int_list
   then 1 + number_before_reaching_sum(sum - hd int_list, tl int_list)
-  else 1
+  else 0
 
 (* 9 *)
 fun what_month(day:int) =
@@ -76,15 +76,10 @@ fun what_month(day:int) =
 
 (* 10 *)
 fun month_range (day1: int ,day2: int) =
-  let fun countup(a: int , b: int) =
-	if a <= b
-	then a :: countup( a+1, b)
-	else []
-      val m1 = what_month(day1)
-      val m2 = what_month(day2)
-  in
-      countup(m1, m2)
-  end
+  if day1 > day2
+  then []
+  else what_month (day1) :: month_range(day1+1, day2)
+
 
 (* 11 *)
 fun oldest (dates: (int * int *int) list) =
