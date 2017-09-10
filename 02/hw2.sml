@@ -147,3 +147,19 @@ fun officiate (clst, mlst, goal) =
     in
         aux(clst, mlst, [])
     end
+
+
+	all_same_color: Your function returns an incorrect result when given the list [(Clubs,Ace),(Spades,Ace),(Diamonds,Ace)] [incorrect answer]
+sum_cards: Your function returns an incorrect result when summing a list of cards. [timeout]
+sum_cards: Your function returns an incorrect result when summing a long list of cards. [timeout]
+score: Your function returns an incorrect result when the sum is greater than the goal, and the hand contains cards of both colors. [timeout]
+score: Your function returns an incorrect result when the sum is not greater than the goal, and the hand contains cards of both colors. [timeout]
+score: Your function returns an incorrect result when the sum is greater than the goal, and the hand contains cards of oly one color. [timeout]
+score: Your function returns an incorrect result when the sum is not greater than the goal, and the hand contains cards hand of both colors. [timeout]
+score: Your function returns an incorrect result when the sum is exactly equal to the goal. [timeout]
+score: Your function returns an incorrect result when you must round the score correctly. [timeout]
+officiate: Your function returns an incorrect result when the game should end due to an empty card list. [Overflow exception thrown]
+officiate: Your function returns an incorrect result when the game should end due to the sum of cards in the player's hand exceeding the goal. [Overflow exception thrown]
+officiate: the game ends with no more move and the held-cards are of different colors. [Overflow exception thrown]
+3a tests failed to run (most likely caused by an incorrect function signature or unimplemented function in the submission)
+3b tests failed to run (most likely caused by an incorrect function signature or unimplemented function in the submission)
