@@ -94,4 +94,46 @@ fun g f1 f2 p =
 
 	
       (* 9 *)
-      
+      (* 9-a *)
+val count_wildcards = g (fn () => 1) (fn str => 0)
+(* 9-b *)
+val count_wild_and_variable_lengths = g (fn () => 1) String.size
+(* 9-c *)
+fun count_some_var (str, ptn) =
+    g (fn () => 0) (fn s => if s = str then 1 else 0) ptn
+
+(* 10 *)
+fun check_pat pat =
+    let fun all_vars ptn =
+            case ptn of
+                Variable x => [x]
+              | TupleP ps => List.foldl (fn (p, i) => i @ (all_vars p)) [] ps
+              | ConstructorP(_, p) => all_vars p
+              | _ => []
+        fun is_uniq lst =
+            case lst of
+                [] => true
+              | head::tail => (not (List.exists (fn str => str = head) tail))
+                              andalso (is_uniq tail)
+    in
+        is_uniq(all_vars pat)
+    end
+
+(* 11 *)
+fun match (va, pat) =
+    case (va, pat) of
+        (_, Wildcard) => SOME []
+      | (v, Variable s) => SOME [(s, v)]
+      | (Unit, UnitP) => SOME []
+      | (Const i, ConstP j) => if i = j then SOME [] else NONE
+      | (Tuple vs, TupleP ps) => if List.length vs = List.length ps
+                                 then all_answers match (ListPair.zip(vs, ps))
+                                 else NONE
+      | (Constructor(s2, v), ConstructorP(s1, p)) => if s1 = s2
+                                                     then match(v, p)
+                                                     else NONE
+      | (_, _) => NONE
+
+(* 12 *)
+fun first_match va plst =
+    SOME (first_answer (fn x => match(va, x)) plst) handle NoAnswer => NONE
