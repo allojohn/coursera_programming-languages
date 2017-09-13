@@ -63,6 +63,43 @@
                 (cons (cons 0 (car x)) (lambda () (f ((cdr x))))))])
     (lambda () (f (s)))))
 
+;;;8
+(define (circle-lits xs ys)
+  (letrec ([pr (lambda (n)
+                 (cons (list-nth-mod xs n)
+                       (list-nth-mod ys n)))]
+           [f (lambda (x)
+                (cons (pr x)
+                      (lambda () (f (+ x 1)))))])
+    (lambda () (f 0))))
+
+;;;9
+;;test
+(define (vector-assoc v vec)
+  (letrec ([f (lambda (n)
+                (if (>= n (vector-length vec))
+                    #f
+                    (let ([n-th (vector-ref vec n)])
+                      (if (and (pair? n-th) (equal? (car n-th) v))
+                          n-th
+                          (f (+ n 1))))))])
+    (f 0)))
+
+;;;10
+(define (cached-assoc xs n)
+  (letrec ([memo (make-vector n #f)]
+           [pos 0])
+    (lambda (v)
+      (or (vector-assoc v memo)
+          (let ([new-ans (assoc v xs)])
+            (and new-ans
+                 (begin
+                   (vector-set! memo pos new-ans)
+                   (set! pos (remainder (+ pos 1) n))
+                   new-ans)))))))
+
+                        
+           
   
 
 
