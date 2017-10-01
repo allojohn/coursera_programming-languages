@@ -11,16 +11,18 @@
 
 1. 变量
 2. 操作
-
-! [alt text] (/Users/mac/www.jiangxinwen.com/gist.jiangxinwen.com/analyze languages.jpg "ML实例")
-
 出处：Coursera: Programming Languages-OOP_versus_functional_decomposition
 
+### 技巧卡
+ML中分解程序的方式：在课程的实例中，各类变量用datatype统一，而对各种变量的操作，也因此变得简洁，可以添加针对该datatype的函数去解决。
+出处：Coursera: Programming Languages-OOP_versus_functional_decomposition
 
+### 金句卡
+> * Fp and OOP often doing the same thing in exact opposite way--Organize the program "by row" or "by column"
+* Which is "most natural" may depend on what you are doing (e.g., an interpreter vs. a GUI) or personal taste
+* Code layout is important,but there is no perfect way since software has many dimensions of structure --Tool,IDEs can help with multiple "views"(e.g.,rows/columns)
 
-
-
-
+出处：Coursera: Programming Languages-OOP_versus_functional_decomposition
 
 
 ### 技巧卡
